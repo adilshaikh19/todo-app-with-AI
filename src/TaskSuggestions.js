@@ -43,7 +43,13 @@ const TaskSuggestions = () => {
 
   return (
     <div className="container my-5">
-      <h2 className="text-center mb-4">AI Task Suggestions</h2>
+      <h2 className="text-center mb-4"
+      style={{
+        border:"1px solid black",
+        padding:"5px",
+        backgroundColor:"lightblue",
+
+      }}>AI Task Suggestions</h2>
 
       {loading && (
         <div className="text-center">
