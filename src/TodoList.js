@@ -110,8 +110,12 @@ const TodoList = () => {
             </div>
             <div className="col-3">
               <button
-                className="btn btn-outline-primary"
+                className="btn"
                 onClick={() => goToSuggestions(todo.task)}
+                style={{
+                  border:"1px solid black",
+                  backgroundColor:"lightblue"
+                }}
               >
                 Get Suggestions
               </button>
