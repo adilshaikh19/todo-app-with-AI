@@ -49,19 +49,37 @@ const TodoList = () => {
     <div className="container my-5">
       <div
         className="mx-auto rounded border p-4"
-        style={{ width: "900px", backgroundColor: "#F5F5F5" }}
+        style={{ maxWidth: "900px", backgroundColor: "#F5F5F5" }}
       >
         <h2 className="text-center mb-4">My Todo</h2>
 
-        <form className="d-flex mb-4" onSubmit={handleSubmit}>
-          <input
-            className="form-control me-2"
-            placeholder="Add Task"
-            name="task"
-          />
-          <input className="form-control me-2" type="date" name="date" />
-          <button className="btn btn-outline-success" type="submit">
-            Add Todo
+        <form
+          className="d-flex flex-column flex-md-row mb-4"
+          onSubmit={handleSubmit}
+        >
+          <div className="form-group mb-2 mb-md-0 me-md-2 w-100">
+            <label htmlFor="task">Task</label>
+            <input
+              className="form-control w-100"
+              placeholder="Add Task"
+              name="task"
+              id="task"
+            />
+          </div>
+          <div className="form-group mb-2 mb-md-0 me-md-2 w-100">
+            <label htmlFor="date">Due Date</label>
+            <input
+              className="form-control w-100"
+              type="date"
+              name="date"
+              id="date"
+            />
+          </div>
+          <button
+            className="btn btn-outline-success align-self-end mt-3 mt-md-0"
+            type="submit"
+          >
+            Add
           </button>
         </form>
 
@@ -76,24 +94,24 @@ const TodoList = () => {
             padding: "10px",
           }}
         >
-          <div className="col-4">Task</div>
-          <div className="col-3">Due Date</div>
-          <div className="col-2">Actions</div>
-          <div className="col-3">Suggestions</div>
+          <div className="col-12 col-md-4">Task</div>
+          <div className="col-12 col-md-3">Due Date</div>
+          <div className="col-12 col-md-2">Actions</div>
+          <div className="col-12 col-md-3">Suggestions</div>
         </div>
 
         {/* Todo Items */}
         {todos.map((todo, index) => (
           <div
             key={index}
-            className="row align-items-center rounded p-2 mb-2"
+            className="row align-items-center rounded p-2 mb-2 text-center text-md-start"
             style={{
               backgroundColor: todo.completed ? "lightgreen" : "white",
             }}
           >
-            <div className="col-4">{todo.task}</div>
-            <div className="col-3">{todo.date}</div>
-            <div className="col-2">
+            <div className="col-12 col-md-4">{todo.task}</div>
+            <div className="col-12 col-md-3">{todo.date}</div>
+            <div className="col-12 col-md-2">
               <i
                 className={
                   "h5 me-3" +
@@ -108,13 +126,13 @@ const TodoList = () => {
                 onClick={() => deleteTask(index)}
               ></i>
             </div>
-            <div className="col-3">
+            <div className="col-12 col-md-3">
               <button
-                className="btn"
+                className="btn w-100"
                 onClick={() => goToSuggestions(todo.task)}
                 style={{
-                  border:"1px solid black",
-                  backgroundColor:"lightblue"
+                  border: "1px solid black",
+                  backgroundColor: "lightblue",
                 }}
               >
                 Get Suggestions
