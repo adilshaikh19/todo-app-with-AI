@@ -97,7 +97,7 @@ const TodoList = () => {
           <div className="col-12 col-md-4">Task</div>
           <div className="col-12 col-md-3">Due Date</div>
           <div className="col-12 col-md-2">Actions</div>
-          <div className="col-12 col-md-3">Suggestions</div>
+          <div className="col-12 col-md-3">AI Suggestions</div>
         </div>
 
         {/* Todo Items */}
