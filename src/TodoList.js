@@ -83,63 +83,69 @@ const TodoList = () => {
           </button>
         </form>
 
-        {/* Header Row */}
-        <div
-          className="row font-weight-bold mb-2"
-          style={{
-            backgroundColor: "#28282B",
-            color: "white",
-            border: "1px solid black",
-            borderRadius: "5px",
-            padding: "10px",
-          }}
-        >
-          <div className="col-12 col-md-4">Task</div>
-          <div className="col-12 col-md-3">Due Date</div>
-          <div className="col-12 col-md-2">Actions</div>
-          <div className="col-12 col-md-3">AI Suggestions</div>
-        </div>
 
-        {/* Todo Items */}
-        {todos.map((todo, index) => (
-          <div
-            key={index}
-            className="row align-items-center rounded p-2 mb-2 text-center text-md-start"
-            style={{
-              backgroundColor: todo.completed ? "lightgreen" : "white",
-            }}
-          >
-            <div className="col-12 col-md-4">{todo.task}</div>
-            <div className="col-12 col-md-3">{todo.date}</div>
-            <div className="col-12 col-md-2">
-              <i
-                className={
-                  "h5 me-3" +
-                  (todo.completed ? " bi bi-check-square" : " bi bi-square")
-                }
-                style={{ cursor: "pointer" }}
-                onClick={() => changeTaskStatus(index)}
-              ></i>
-              <i
-                className="bi bi-trash text-danger h5"
-                style={{ cursor: "pointer" }}
-                onClick={() => deleteTask(index)}
-              ></i>
+        {todos.length === 0 ? (
+          <p className="text-center text-muted">No tasks available. Add New...</p>
+        ) : (
+          <>
+         
+            <div
+              className="row font-weight-bold mb-2"
+              style={{
+                backgroundColor: "#28282B",
+                color: "white",
+                border: "1px solid black",
+                borderRadius: "5px",
+                padding: "10px",
+              }}
+            >
+              <div className="col-12 col-md-4">Task</div>
+              <div className="col-12 col-md-3">Due Date</div>
+              <div className="col-12 col-md-2">Actions</div>
+              <div className="col-12 col-md-3">AI Suggestions</div>
             </div>
-            <div className="col-12 col-md-3">
-              <button
-                className="btn w-100"
-                onClick={() => goToSuggestions(todo.task)}
+
+            {todos.map((todo, index) => (
+              <div
+                key={index}
+                className="row align-items-center rounded p-2 mb-2 text-center text-md-start"
                 style={{
-                  border: "1px solid black",
-                  backgroundColor: "lightblue",
+                  backgroundColor: todo.completed ? "lightgreen" : "white",
                 }}
               >
-                Get Suggestions
-              </button>
-            </div>
-          </div>
-        ))}
+                <div className="col-12 col-md-4">{todo.task}</div>
+                <div className="col-12 col-md-3">{todo.date}</div>
+                <div className="col-12 col-md-2">
+                  <i
+                    className={
+                      "h5 me-3" +
+                      (todo.completed ? " bi bi-check-square" : " bi bi-square")
+                    }
+                    style={{ cursor: "pointer" }}
+                    onClick={() => changeTaskStatus(index)}
+                  ></i>
+                  <i
+                    className="bi bi-trash text-danger h5"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => deleteTask(index)}
+                  ></i>
+                </div>
+                <div className="col-12 col-md-3">
+                  <button
+                    className="btn w-100"
+                    onClick={() => goToSuggestions(todo.task)}
+                    style={{
+                      border: "1px solid black",
+                      backgroundColor: "lightblue",
+                    }}
+                  >
+                    Get Suggestions
+                  </button>
+                </div>
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
